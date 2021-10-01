@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Ejercicios de prueba</title>
+    </head>
+    <body>
+        <script>
+            
+            // Variable que contendra el numeros
+           var nota = 0;
+
+            // Recogo el valor por pantalla
+            nota = parseInt(prompt("Dime tu nota"));
+            
+            if( nota < 5  &&  nota > 0 ){
+                // Nota 0-4 = Suspenso
+                alert("Suspenso");
+            } else if( nota < 7  &&  nota >= 5 ){
+                // Nota 5-6 = Aprobado
+                alert("Aprobado");      
+            } else if( nota < 9  &&  nota >= 7 ){
+                // Nota 7=8 = Notable
+                alert("Notable");
+            } else if( nota <= 10  &&  nota >= 9 ){
+                // Nota 9=10 = Sobresaliente
+                alert("Sobresaliente");
+            } else {  
+                // Nota no comprendida entre 0-10
+                alert("Nota no válida");
+            }
+
+        </script>
+    </body>
+</html>

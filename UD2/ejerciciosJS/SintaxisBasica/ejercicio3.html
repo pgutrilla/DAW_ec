@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Ejercicios de prueba</title>
+    </head>
+    <body>
+        <script>
+            
+            // Variable que contendra la edad
+           var edad = "";
+
+            // Recogo el valor por pantalla
+           edad = prompt("Dime tu edad");
+
+            
+           if ( edad < 12 && edad > 0 ) {
+                // Edad 0-12 = Niño
+                alert( edad + ":Niño");
+           } else if (edad <= 12 && edad > 0) {
+                // Edad 0-12 = Niño
+                alert( edad + ":Joven");
+           } else if (edad <= 26 && edad > 12) {
+                // Edad 0-12 = Niño
+                alert( edad + ":Adulto");
+           } else if (edad > 60) {
+                // Edad 0-12 = Niño
+                alert( edad + ":Jubilado");
+           } else {
+                alert( "Numero no valido" );
+           }
+
+        </script>
+    </body>
+</html>

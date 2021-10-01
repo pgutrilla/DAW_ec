@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Ejercicios de prueba</title>
+    </head>
+    <body>
+        <script>
+            
+            var operacion = false;
+
+            // True debido a que se compruban que ambos sean 10 independientemente del tipo primitivo
+            opercion = (10 == 10);
+            alert( "La operación 10 == 10 es:" + opercion );
+
+            // True debido a que se compruban que ambos sean 10 y tengan el mismo tipo primitivo
+            opercion = (10 === 10);
+            alert( "La operación 10 === 10 es:" + opercion );
+            
+            // True debido a que se compruban que ambos sean 10 y tengan el mismo tipo primitivo
+            opercion = (10 === 10.0);
+            alert( "La operación 10 === 10.0 es:" + opercion );
+            
+            // False debido a que las cadenas no son iguales
+            opercion = ("Laura" == "laura");
+            alert( "La operación \"Laura\" == \"laura\" es:" + opercion );
+
+            // False debido a el valor de la cadena en ASCII es menor que "laura"
+            opercion = ("Laura" > "laura");
+            alert( "La operación \"Laura\" > \"laura\" es:" + opercion );
+            
+            // True debido a el valor de la cadena en ASCII es menor que "laura"
+            opercion = ("Laura" < "laura");
+            alert( "La operación \"Laura\" < \"laura\" es:" + opercion );
+
+            // True ya que ambos son 123 independientemente del tipo primitivo
+            opercion = ("123" == 123);
+            alert( "La operación \"123\" == 123 es:" + opercion );
+            
+            // False debido a que no pertencen al mismo tipo primitivo
+            opercion = ("123" === 123);
+            alert( "La operación \"123\" === 123 es:" + opercion );
+
+            // True debido a que se parsea para que pertenezcan al mismo tipo primitivo
+            opercion = (parseInt("123") === 123);
+            alert( "La operación parseInt(\"123\") == 123 es:" + opercion );
+
+            // alert(parseInt("Laura"));
+            
+        </script>
+    </body>
+</html>
