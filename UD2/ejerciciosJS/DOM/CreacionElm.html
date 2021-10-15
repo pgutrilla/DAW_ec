@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>MABURRO</title>
+    </head>
+    <body>
+
+        <p id="jolin"></p>
+
+        <script>
+            var parrafo = document.createElement("p");
+            var contenido = document.createTextNode("Hey");
+
+            parrafo.appendChild(contenido);
+            document.body.appendChild(parrafo);
+
+            var jolin = document.getElementById("jolin");
+            jolin.parentNode.removeChild(jolin);
+        </script>
+    </body>
+</html>

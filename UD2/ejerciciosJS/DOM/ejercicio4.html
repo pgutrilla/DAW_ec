@@ -1,0 +1,50 @@
+<html>
+
+<head>
+
+<title>Ejercicio DOM</title>
+
+<meta charset="UTF-8">
+
+    <style type="text/css">
+
+        table,th,td,tr { 
+            border: 1px solid black; 
+            }
+
+        </style>
+
+    </head>
+
+    <script type="text/javascript" src="tablas.js"></script>
+ 
+<body>
+
+<table id="tabla">
+
+    <tr>
+        <td colspan="4">Flores</td>
+    </tr>
+
+    <tr>
+        <td>Nombre</td>
+        <td>Ubicacion</td>
+        <td>Ejemplares</td>
+        <td>Flor</td>
+    </tr>
+
+    <tr>
+        <td>Tulipan</td>
+        <td>España</td>
+        <td>5</td>
+        <td>Amarillo</td>
+    </tr>
+
+</table>
+
+<input type="button" value="Generar planta" onclick="insertarTr();">
+<input type="button" value="Borrar utlima" onclick="borrarTr();">
+
+</body>
+
+</html>

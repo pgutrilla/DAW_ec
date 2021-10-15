@@ -1,0 +1,49 @@
+<html>
+
+<head>
+
+<title>Ejercicio DOM</title>
+
+</head>
+
+ 
+
+<body>
+
+<ul id="lista">
+
+      <li>Elemento 1</li>
+
+      <li>Elemento 2</li>
+
+      <li>Elemento 3</li>
+
+      <li>Elemento 4</li>
+
+</ul>
+
+<input type="button" value="Insertar elemento" onclick="insertar();">
+
+    <script type="text/javascript">
+
+        var ulElem = document.getElementById("lista");
+
+        function insertar() {
+
+            //Recogo todos los li asociados al ul
+            var nLi = ulElem.getElementsByTagName("li").length;
+
+            //Creo el nuevo elemento asignandole el numero que le toca
+            var newLi = document.createElement("li");
+            newLi.textContent = "Elemento " + ++nLi;
+            
+            //Introduzco el nuevo elemento en el ul
+            ulElem.appendChild(newLi);
+
+        }
+
+    </script>
+
+</body>
+
+</html>

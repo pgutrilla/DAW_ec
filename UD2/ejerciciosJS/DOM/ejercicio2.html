@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="es">
+    <meta charset="UTF-8">
+
+
+    <style type="text/css">
+
+    .oculto { display: none; }
+
+    .visible { display: inline; }
+
+    </style>
+
+</head>
+
+ 
+
+<body>
+
+    <p id="texto">Texto ejercicio 2<span id="adicional" class="oculto"> segunda parte </span></p>
+
+    <a id="enlace" href="#" onclick="muestra()">Seguir leyendo</a>
+
+    <script type="text/javascript">
+
+        var estado = false;
+        var adicional = document.getElementById("adicional");
+        var enlace = document.getElementById("enlace");
+
+        function muestra() {
+
+            adicional.classList.remove("oculto");
+            adicional.classList.add("visible");
+            
+            enlace.classList.add("oculto");
+
+            // if( !estado ){
+            //     enlace.classList.remove("visible");
+            //     enlace.classList.add("oculto");
+            //     estado = true;
+            // } else {
+            //     enlace.classList.remove("oculto");
+            //     enlace.classList.add("visible");
+            //     estado = false;
+            // }
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
