@@ -33,6 +33,9 @@ window.onload = function(){
     var formUno = createForm('radio', arrTutores, 'fisios');
     elemBody[0].appendChild(formUno);
 
+
+    //-----------------LISTENERS-----------------
+
     // Listener que capturara cuando a cambiado el formulario y asi pintar las celdas del valor seleccionado
     document.getElementById('actividades').addEventListener("click", function(){
         var thisForm = this;
@@ -47,6 +50,10 @@ window.onload = function(){
     }, false);
 
 
+    //-----------------LISTENERS-----------------
+
+    //-----------------FUNCIONES-----------------
+
     // Funcion que recorre el array de dias y genera una cabecera para la tabla teniendo en cada celda un dia
     function createCabecera(){
 
@@ -55,14 +62,17 @@ window.onload = function(){
 
         for( y = 0; y < arrDias.length + 1; y++ ){
 
+            // Creo un th al que le pondre el texto
             var newTh = document.createElement("th");
 
+            // Si es la primera celda en vez de dia pongo horario (Para llenar el hueco de las horas), sino adjunto el dia correspondiente
             if( y == 0 ){        
                 newTh.textContent= "Horario" ;        
             } else {
                 newTh.textContent= arrDias[y -1];        
             }
 
+            // Meto el th creado a un tr que es el que retornara la funcion
             newTr.appendChild(newTh);
         }
 
@@ -165,4 +175,5 @@ window.onload = function(){
         }
     }    
 
+    //-----------------FUNCIONES-----------------
 }
