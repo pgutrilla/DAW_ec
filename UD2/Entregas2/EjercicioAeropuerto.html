@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Aeropuerto</title>
+        <script type="text/javascript" src="aeropuerto.js"></script>
+        <style type="text/css">
+
+            table,th,td,tr { 
+                border: 1px solid black; 
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <form name="vuelo" action="javascript:createVuelo()">
+            <label>Codigo</label><br><input name="codigo" type="number" value=""><br>
+            <label>Hora de salida</label><br><input name="horaSalida" type="number" value=""><br>
+            <label>Minuto de salida</label><br><input name="minSalida" type="number" value=""><br>
+            <label>Hora de llegada</label><br><input name="horaLlegada" type="number" value=""><br>
+            <label>Minuto de llegada</label><br><input name="minLlegada" type="number" value=""><br>
+            <input type="submit" value="Crear">
+        </form>
+        <table id="tabla-vuelo">
+
+        </table>
+
+        <br><br>
+
+        <form name="aeropuerto" action="javascript:createAeropuerto()">
+            <label>Nombre</label><br><input name="nombre" type="text" value=""><br>
+            <label>Ciudad</label><br><input name="ciudad" type="text" value=""><br>
+            <label>Numero vuelos diarios</label><br><input name="nVuelosDiarios" type="number" value=""><br>
+            <input type="submit" value="Crear">
+        </form>
+        <table id="tabla-aeropuerto">
+            
+        </table>
+
+    </body>
+</html>
