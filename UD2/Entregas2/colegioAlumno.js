@@ -7,12 +7,18 @@
         this.nombre = nombre; 
         this.numeroAulas = numeroAulas;
         this.numeroAlumnos = numeroAlumnos;
+        this.setNumeroAlumnos = function ( n ) {
+            this.numeroAlumnos = n;
+        }
     }
 
     function Alumno( DNI, nombre, notaMedia ){
         this.DNI = DNI; 
         this.nombre = nombre;
         this.notaMedia = notaMedia;
+        this.setNota = function ( n ) {
+            this.notaMedia = n;
+        }
     }
 
     function createAlumno(){
@@ -75,13 +81,16 @@
 
             var newTr = document.createElement("tr");
             
-            Object.keys(arrObjetos[r]).forEach(key => {
-                var newTd = document.createElement("td");
+            Object.keys(arrObjetos[r]).forEach(key => { 
+                if( !(arrObjetos[r][key] instanceof Function) ){
+                    
+                    var newTd = document.createElement("td");
 
-                arrCampos.push(key);
-                newTd.textContent= arrObjetos[r][key];
+                    arrCampos.push(key);
+                    newTd.textContent= arrObjetos[r][key];
 
-                newTr.appendChild(newTd);
+                    newTr.appendChild(newTd);
+                }
             });
 
             var botonTd = createModTd(formName, r);
@@ -120,7 +129,7 @@
                 do{var nota = prompt("Dame la nota media");} 
                 while( isNaN(nota) )
                 
-                arrAlumnos[id].notaMedia = nota;
+                arrAlumnos[id].setNota(nota);
                 createTabla( arrAlumnos, form );        
                 break;
 
@@ -128,7 +137,7 @@
                 do{var numero = prompt("Dame el numero de alumnos");} 
                 while( isNaN(numero) )
                 
-                arrColegios[id].numeroAlumnos = numero;
+                arrColegios[id].setNumeroAlumnos(numero);
                 createTabla( arrColegios, form );        
                 break;
         }

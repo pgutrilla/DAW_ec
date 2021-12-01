@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <script type="text/javascript" src="login.js"></script>
+        <style type="text/css">
+
+            table,th,td,tr { 
+                border: 1px solid black; 
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1> Creación de usuarios</h1>
+
+        <button id="adminCreate"> Crear usuario</button>
+        <button id="userCreate"> Crear administrador</button>
+        
+        <br><br>
+
+        <h2>Acceder</h2>
+        <form name="usuario" action="javascript:login()">
+            <label>Nombre</label><br><input name="login" type="text" value=""><br>
+            <label>Contraseña</label><br><input name="contrasenia" type="password" value=""><br>
+            <input type="submit" value="Login">
+        </form>
+
+    </body>
+</html>

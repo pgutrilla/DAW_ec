@@ -28,8 +28,16 @@
             this.horaSalida.setHours(horaSalida);
             this.horaSalida.setMinutes(minSalida);
         }
-
-
+        setHoraLlegada( horaLlegada, minLlegada ){
+            this.horaLlegada = new Date();
+            this.horaLlegada.setHours(horaLlegada);
+            this.horaLlegada.setMinutes(minLlegada);
+        }
+        setHoraSalida( horaSalida, minSalida ){
+            this.horaSalida = new Date();
+            this.horaSalida.setHours(horaSalida);
+            this.horaSalida.setMinutes(minSalida);
+        }
     }
 
     function createVuelo(){
@@ -57,17 +65,17 @@
     //-----------------FUNCIONES-----------------
 
     // Funcion que recorre el array de dias y genera una cabecera para la tabla teniendo en cada celda un dia
-    function createCabecera( arrCampos ){
+    function createCabecera( arrCampos, incremento ){
 
         var newTr = document.createElement("tr");
         var y = 0;
 
-        for( y = 0; y < arrCampos.length + 1; y++ ){
+        for( y = 0; y < arrCampos.length + incremento; y++ ){
 
             // Creo un th al que le pondre el texto
             var newTh = document.createElement("th");
 
-            if( y != arrCampos.length ){        
+            if( y < arrCampos.length ){        
                 newTh.textContent= arrCampos[y].toUpperCase();
             } else {
                 newTh.textContent= "Modificar".toUpperCase();        
@@ -101,11 +109,21 @@
                 newTr.appendChild(newTd);
             });
 
-            var botonTd = createModTd(formName, r);
+            var botonTd = createModTd(formName, r, 'llegada');
             newTr.appendChild(botonTd);
+            
+            if (formName == "vuelo"){
+                var botonTd = createModTd(formName, r, 'salida');
+                newTr.appendChild(botonTd);
+            }
+            
 
             if( r == 0 ){
-                table.appendChild(createCabecera(arrCampos));
+                if (formName == "vuelo"){
+                table.appendChild(createCabecera(arrCampos, 2));
+                } else {
+                table.appendChild(createCabecera(arrCampos, 1));
+                }
             }
 
             table.appendChild(newTr);
@@ -116,37 +134,53 @@
 
     }
 
-    function createModTd( form, id ){
+    function createModTd( form, id, side ){
         var botonTd = document.createElement("td");
         var botonMod = document.createElement("button");
         
+        var formAction = form+"-"+side;
+
         botonMod.textContent = "Modificar";
         botonMod.dataset.form = form;
+        botonMod.dataset.formAction = form+"-"+side;
         botonMod.dataset.id = id;
-        botonMod.onclick = function(){ modifyObject(form,id); };
+        botonMod.onclick = function(){ modifyObject(form,id,formAction); };
 
         botonTd.appendChild(botonMod);
 
         return botonTd;
     }
 
-    function modifyObject( form, id ){
+    function modifyObject( form, id, formAction ){
 
         switch( form ){
+            
             case 'vuelo':
-                do{var nota = prompt("Dame la nota media");} 
-                while( isNaN(nota) )
-                
-                arrAlumnos[id].notaMedia = nota;
-                createTabla( arrAlumnos, form );        
+                do{
+                    var hora = prompt("Dame la hora");
+                    var minutos = prompt("Dame los minutos");
+                } while( isNaN(hora) && isNaN(minutos) )
+
+                switch( formAction ){
+                    case 'vuelo-salida':
+                        arrVuelos[id].setHoraSalida( hora, minutos );
+                        break;
+                    case 'vuelo-llegada':
+                        arrVuelos[id].setHoraLlegada( hora, minutos );
+                        break;
+                }
+
+                createTabla( arrVuelos, form );        
                 break;
 
             case 'aeropuerto':
-                do{var numero = prompt("Dame el numero de alumnos");} 
+                do{
+                    var numero = prompt("Dame el numero de vuelos");
+                } 
                 while( isNaN(numero) )
                 
-                arrColegios[id].numeroAlumnos = numero;
-                createTabla( arrColegios, form );        
+                arrAeropuertos[id].setNVuelosDiarios(numero);
+                createTabla( arrAeropuertos, form );        
                 break;
         }
  
