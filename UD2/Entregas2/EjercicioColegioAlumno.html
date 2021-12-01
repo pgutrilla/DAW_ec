@@ -13,24 +13,29 @@
         </style>
     </head>
     <body>
+
+        <!-- Este form llama a la funcion de createAlumno en el js -->
         <form name="alumno" action="javascript:createAlumno()">
             <label>DNI</label><br><input name="DNI" type="text" value=""><br>
             <label>Nombre</label><br><input name="nombre" type="text" value=""><br>
             <label>Nota media</label><br><input name="notaMedia" type="number" value=""><br>
             <input type="submit" value="Crear">
         </form>
+        <!-- Tabla que se rellena con al informacion del array de Alumnos -->
         <table id="tabla-alumno">
 
         </table>
 
         <br><br>
 
+        <!-- Este form llama a la funcion de createColegio en el js -->
         <form name="colegio" action="javascript:createColegio()">
             <label>Nombre</label><br><input name="nombre" type="text" value=""><br>
             <label>Numero aulas</label><br><input name="numeroAulas" type="number" value=""><br>
             <label>Numero alumnos</label><br><input name="numeroAlumnos" type="number" value=""><br>
             <input type="submit" value="Crear">
         </form>
+        <!-- Tabla que se rellena con al informacion del array de Colegios -->
         <table id="tabla-colegio">
             
         </table>

@@ -15,12 +15,14 @@
     <body>
         <h1> Creación de usuarios</h1>
 
+        <!-- BOTONES CAPTURADOS CON EVENTOS LISTENER -->
         <button id="adminCreate"> Crear usuario</button>
         <button id="userCreate"> Crear administrador</button>
         
         <br><br>
 
         <h2>Acceder</h2>
+        <!-- El form llama a la funcion login para comprobar si existe el usuario -->
         <form name="usuario" action="javascript:login()">
             <label>Nombre</label><br><input name="login" type="text" value=""><br>
             <label>Contraseña</label><br><input name="contrasenia" type="password" value=""><br>

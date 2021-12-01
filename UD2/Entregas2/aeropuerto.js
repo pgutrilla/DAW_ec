@@ -3,6 +3,8 @@
     arrVuelos = [];
     arrAeropuertos = [];
 
+    //-----------------CLASES-----------------
+
     class Aeropuerto {
         
         constructor( nombre, ciudad, nVuelosDiarios ){
@@ -28,11 +30,15 @@
             this.horaSalida.setHours(horaSalida);
             this.horaSalida.setMinutes(minSalida);
         }
+
+        //Metodo para actualizar la hora de llegada
         setHoraLlegada( horaLlegada, minLlegada ){
             this.horaLlegada = new Date();
             this.horaLlegada.setHours(horaLlegada);
             this.horaLlegada.setMinutes(minLlegada);
         }
+
+        //Metodo para actualizar la hora de salida
         setHoraSalida( horaSalida, minSalida ){
             this.horaSalida = new Date();
             this.horaSalida.setHours(horaSalida);
@@ -40,31 +46,54 @@
         }
     }
 
+    //-----------------CLASES-----------------
+
+    //-----------------FUNCIONES-----------------
+
+    // Esta funcion recoge todos los input del form de vuelo y crea un objeto que almacena en el array de vuelos
     function createVuelo(){
+
+        //Formulario
         var form = document.vuelo;
+
+        //Compruebo que los input no vengan vacios y indico si lo estan
         if( form.codigo.value != "" && form.horaLlegada.value != '' && form.minLlegada.value != '' && form.horaSalida.value != '' && form.minSalida.value != '' ){
+        
+            //Creo el objeto y lo nmeto en el array
             var vuelo = new Vuelo( form.codigo.value, form.horaLlegada.value, form.minLlegada.value, form.horaSalida.value, form.minSalida.value );
             arrVuelos.push(vuelo);
+
+            //Recargo la tabla con los elemntos del array de vuelos
             createTabla( arrVuelos, form.name );
         } else {
             alert("Falta de rellenar campos");
         }
     }
 
+    // Esta funcion recoge todos los input del form de aeropuerto y crea un objeto que almacena en el array de aeropuertos
     function createAeropuerto(){
+        
+        //Formulario
         var form = document.aeropuerto;
+
+        //Compruebo que los input no vengan vacios y indico si lo estan
         if( form.nombre.value != '' && form.ciudad.value != '' && form.nVuelosDiarios.value != "" ){
+
+            //Creo el objeto y lo meto en el array
             var aeropuerto = new Aeropuerto( form.nombre.value, form.ciudad.value, form.nVuelosDiarios.value );
             arrAeropuertos.push(aeropuerto);
+
+            //Recargo la tabla con los elemntos del array de aeropuertos
             createTabla( arrAeropuertos , form.name );
         } else {
             alert("Falta de rellenar campos");
         }
     }
 
-    //-----------------FUNCIONES-----------------
 
-    // Funcion que recorre el array de dias y genera una cabecera para la tabla teniendo en cada celda un dia
+    //-----------------TABLA-----------------
+
+    // Funcion que recorre los atributos de objeto y crea una cavecera con los atributos
     function createCabecera( arrCampos, incremento ){
 
         var newTr = document.createElement("tr");
@@ -88,9 +117,10 @@
         return newTr;
     }
 
-    // Funcion que crea la tabla, mediante un array con la horas del horario, los valores a pintar y el id que se le pondra a la tabla
+    // Funcion que crea la tabla con un objeto que se le pasa, crear la cabecera usando las propiedades y  rellena la tabla con todos los objetos
     function createTabla( arrObjetos, formName ){
 
+        //Limpio la tabla que hubiese y la recargo
         var table = document.getElementById("tabla-"+formName);
         table.innerHTML = '';
         var r = 0;
@@ -100,6 +130,7 @@
 
             var newTr = document.createElement("tr");
             
+            // Recorro todo el objeto y creo un td por cada atributo
             Object.keys(arrObjetos[r]).forEach(key => {
                 var newTd = document.createElement("td");
 
@@ -109,15 +140,18 @@
                 newTr.appendChild(newTd);
             });
 
+            // Creo el boton que modifica la penultima columna
             var botonTd = createModTd(formName, r, 'llegada');
             newTr.appendChild(botonTd);
-            
+
+            // Si es tabla del tipo vuelo creo otro mas
             if (formName == "vuelo"){
                 var botonTd = createModTd(formName, r, 'salida');
                 newTr.appendChild(botonTd);
             }
             
 
+            // Si es la primera ejecucion creo la cabecera y en caso de que sea vuelo creo 2 columnas de modificacion
             if( r == 0 ){
                 if (formName == "vuelo"){
                 table.appendChild(createCabecera(arrCampos, 2));
@@ -140,19 +174,24 @@
         
         var formAction = form+"-"+side;
 
+        // Creo el boton
         botonMod.textContent = "Modificar";
         botonMod.dataset.form = form;
         botonMod.dataset.formAction = form+"-"+side;
         botonMod.dataset.id = id;
+        // En el evento onclick adjunto la funcion que se encarga de actualizar el campo al pulsar el boton, pasandole los parametros
         botonMod.onclick = function(){ modifyObject(form,id,formAction); };
 
         botonTd.appendChild(botonMod);
 
         return botonTd;
     }
+    
+    //-----------------TABLA-----------------
 
     function modifyObject( form, id, formAction ){
 
+        //Compruebo que tabla quiero modificar usando la variable form
         switch( form ){
             
             case 'vuelo':
@@ -161,11 +200,14 @@
                     var minutos = prompt("Dame los minutos");
                 } while( isNaN(hora) && isNaN(minutos) )
 
+                //En caso de que sea vuelo conmpruebo cual de las dos columnas quiere modificar
                 switch( formAction ){
                     case 'vuelo-salida':
+                        //Usando el incide del boton modifico el objeto en su array
                         arrVuelos[id].setHoraSalida( hora, minutos );
                         break;
                     case 'vuelo-llegada':
+                        //Usando el incide del boton modifico el objeto en su array
                         arrVuelos[id].setHoraLlegada( hora, minutos );
                         break;
                 }
@@ -179,7 +221,10 @@
                 } 
                 while( isNaN(numero) )
                 
+                //Usando el incide del boton modifico el objeto en su array
                 arrAeropuertos[id].setNVuelosDiarios(numero);
+    
+                //Recargo la tabla
                 createTabla( arrAeropuertos, form );        
                 break;
         }
