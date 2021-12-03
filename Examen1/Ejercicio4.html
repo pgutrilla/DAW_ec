@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Alumno y Colegio</title>
+        <script type="text/javascript" src="ejercicio4.js"></script>
+        <style type="text/css">
+
+            table,th,td,tr { 
+                border: 1px solid black; 
+            }
+
+        </style>
+    </head>
+    <body>
+        <form name="producto" action="javascript:createProducto()">
+            <label>Codigo</label><br><input name="codigo" type="text" value=""><br>
+            <label>Nombre</label><br><input name="nombre" type="text" value=""><br>
+            <label>Localizacion</label><br><input name="localizacion" type="text" value=""><br>
+            <label>Precio</label><br><input name="precio" type="number" value=""><br>
+            <label>Duracion</label><br><input name="duracion" type="number" value=""><br>
+            <input type="submit" value="Crear">
+        </form>
+        
+        <br>
+        <br>
+        
+        <table id="tabla-producto">
+            <tr>
+                <td>Codigo</td> 
+                <td>Nombre</td> 
+                <td>Localizacion</td> 
+                <td>Precio</td> 
+                <td>Fecha Recepcion</td> 
+                <td>Duracion</td> 
+            </tr>
+            
+        </table>
+
+        <br>
+        <br>
+
+        <form name="busqueda" action="javascript:buscar()">
+            <label>Codigo</label><br><input name="codigo" type="text" value=""><br>
+            <input type="submit" value="Busqueda">
+        </form>
+
+        
+    </body>
+</html>

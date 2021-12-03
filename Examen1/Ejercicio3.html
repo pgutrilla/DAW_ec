@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 3 - Enlaces</title>
+          <script>
+            function prepararEnlaces(){
+               var paginas=['google','hotmail','msn','unizar'];
+               var c = document.getElementById('container');
+               var cadena = "<ul>";
+               for (i=0;i<paginas.length;i++){
+                  cadena += "<li>http://www."+ paginas[i] + ".com</li>";
+               }
+               cadena += "</ul>";
+               c.innerHTML=cadena;
+               crearEnlaces();
+            }
+            function crearEnlaces(){
+                var arrLi = document.getElementsByTagName("li");
+                var arrA = [];
+
+                for(var i = 0; i<arrLi.length; i++){
+                    var newA = document.createElement("a");
+                    newA.href= arrLi[i].textContent;
+                    newA.textContent= arrLi[i].textContent;
+                    arrLi[i].innerHTML = "";
+                    arrLi[i].appendChild(newA);
+                    // arrA.push(newA);
+                }
+               
+            //    var container = document.getElementById('container');
+            //    container.innerHTML = "";
+
+            //    var nA = arrA.length;
+            //    for(var x = nA-1 ; nA >= 0; x--){
+            //         container.appendChild(arrA[x]);
+            //    }
+
+            } 
+        </script>
+    </head>
+
+    <body onload="prepararEnlaces()">
+        <h1>Ejercicio de enlaces</h1>
+        <div id="container"></div>
+    </body>
+</html>

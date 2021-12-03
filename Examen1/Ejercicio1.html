@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 1 - lista</title>
+        <script>
+            
+        </script>
+    </head>
+
+    <body >
+        <form id="form1" name="form1">
+            <input id="nombre" name="nombre"><br>
+            <input id="edad" name="edad"><br>
+            <input id="telefono" name="telefono"><br>
+            <input type="button" id="botonInsertar" value="Inserta usuario"><br>
+        </form>
+        <h1>LISTA DE CLIENTES</h1>
+        <ul>
+     
+        </ul>    
+        
+        <script>
+            
+            function newLiElement( strTextContent ){
+
+                var ul = document.getElementsByTagName("ul")[0];
+        
+                var newLi = document.createElement("li");
+                newLi.textContent= strTextContent;
+
+                ul.appendChild(newLi);
+
+            }
+
+            document.getElementById("botonInsertar").addEventListener("click", function(){
+                var form = document.form1;
+
+                if( form.nombre.value != '' && !isNaN(form.edad.value) && !isNaN(form.telefono.value) ){
+
+                    var nombre = form.nombre.value;
+                    var edad = form.edad.value;
+                    var telefono = form.telefono.value;
+
+                    var srtLi = "Soy "+nombre+". Tengo "+edad+" años y mi telefono es el "+ telefono; 
+
+                    newLiElement( srtLi );
+                } else {
+                    alert("Falta de rellenar campos o son invalidos");
+                }
+
+            },false);
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 2 - Expresiones regulares</title>
+        <script>
+      
+        </script>
+    </head>
+    <body>
+        <form id="form1">
+            <label>Telefono: <input type="text" id="telefono"></label><br>
+            <label>Fecha: <input type="text" id="fecha"></label><br>
+            <label>Número: <input type="text" id="numero"></label><br>
+            <input type="button" id="boton" value="validar">
+        </form>
+        <script>
+
+            function comprobarTelefono( strIntroducido ){
+                var patron = /[0-9]{9}/;
+                var resultado = patron.test( strIntroducido )
+
+                if( !resultado ) {
+                    alert("telefono no valido");
+                }
+
+                return resultado;
+            }
+
+            function comprobarFecha( strIntroducido ){
+                var patron = /[0-3]{1}[0-9]{1}\/[0-1]{1}[0-9]{1}\/[0-9]{4}/g;
+                var resultado = patron.test( strIntroducido )
+
+                if( !resultado ) {
+                    alert("fecha no valida");
+                }
+
+                return resultado;
+            }
+
+            function comprobarNumero( strIntroducido ){
+                var patron = /[0-23]{2}/;
+                var resultado = patron.test( strIntroducido )
+
+                if( !resultado ) {
+                    alert("numero no valido");
+                }
+
+                return resultado;
+            }
+
+            
+
+            document.getElementById("boton").addEventListener("click", function(){
+
+                var telf = document.getElementById("telefono");
+                var telf = telf.value;
+                var fecha = document.getElementById("fecha");
+                var fecha = fecha.value;
+                var numero = document.getElementById("numero");
+                var numero = numero.value;
+
+                
+                if( comprobarTelefono(telf) && comprobarFecha(fecha) && comprobarNumero(numero) ){
+                // if( comprobarTelefono(telf) && comprobarNumero(numero) ){
+                    alert("enhorabuena");
+                }
+
+
+            },false);            
+
+        </script>
+    </body>
+</html>
