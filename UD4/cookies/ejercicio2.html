@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Cookies 2</title>
+        <script>
+            function leerArchivo(){
+                var fichero = this.files[0];
+                alert(fichero.nameca);
+                var lector = new FileReader();
+                lector.readAsText(fichero);
+                lector.onload = function(){ 
+                    document.getElementById("parrafo").textContent = lector.result;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="file" id="archivo"></input>
+        <p id="parrafo"></p>
+
+        <script>
+            document.getElementById("archivo").addEventListener("change", leerArchivo,false);
+        </script>
+    </body>
+</html>

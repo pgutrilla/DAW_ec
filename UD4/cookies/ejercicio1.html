@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>Cookies</title>
+    </head>
+    <body>
+        <script>
+            document.cookie = 'comida_favorita=arroz;max-age=3600';
+            document.cookie = 'color_favorita=verde';
+
+            var str = 'eres un culo';
+            document.cookie = 'testcookie='+encodeURIComponent(str);
+
+            var expiredate = new Date(2089,11,16,21,28);
+            var str2 = 'callate';
+            document.cookie = 'testcookie2='+encodeURIComponent(str2)+';expires='+expiredate.toUTCString();
+
+            localStorage("caca", "jiji");
+
+            var culo = localStorage.getItem("caca");
+
+        </script>
+    </body>
+</html>

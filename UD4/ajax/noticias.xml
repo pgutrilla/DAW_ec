@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<noticias>
+	<noticia>
+		<titulo>Noticia 1</titulo>
+		<cuerpo>Este es el cuerpo de la noticia1</cuerpo>
+	</noticia>
+	<noticia>
+		<titulo>Noticia 2</titulo>
+		<cuerpo>Este es el cuerpo de la noticia2</cuerpo>
+	</noticia>
+</noticias>

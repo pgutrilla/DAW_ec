@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <meta charset="UTF-8">
+        <title>AJAX</title>
+        <script>
+
+            var btn = null;
+
+            function procesarRespuesta(){
+                if( peticion_http.readyState == 4 && peticion_http.status == 200 ){
+                    var noticias= ObjetoXMLHttpRequest.responseText.split(“\n");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            window.onload = function(){
+                
+                btn = document.getElementById("btn");
+
+                btn.addEventListener("click", function(){
+                    if( window.XMLHttpRequest ){
+                        peticion_http = new XMLHttpRequest();
+                    } else if( window.ActiveXObject ){
+                        peticion_http = new ActiveXObject("Microsoft-XMLHTTP");
+                    } else {
+                        alert("El navegador no soporta peticiones AJAX");
+                    }
+
+                    peticion_http.onreadystatechange = procesarRespuesta;
+                    
+                    peticion_http.open("GET", "noticias.xml",true);
+
+                    peticion_http.send(null);
+                
+                });
+            }
+        </script>
+
+        <button id="btn">Cambiar boton</button>
+    </body>
+</html>
