@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        table,th,td {
+            border: 1px solid black;
+            border-collapse:collapse;
+        }
+
+        th,td {
+            padding: 5px;
+        }
+
+        </style>
+        <script>
+
+
+
+        </script>
+    </head>
+
+    <body>
+        <div id="texto">
+
+        <h1>Colección de Cds</h1>
+
+        <button id="cargaCatalogo">Carga catálogo</button>
+
+        </div>
+
+        <table id="demo"></table>
+
+        <script>
+
+            btn = document.getElementById("btn");
+
+            btn.addEventListener("click", function(){
+                if( window.XMLHttpRequest ){
+                    peticion_http = new XMLHttpRequest();
+                } else if( window.ActiveXObject ){
+                    peticion_http = new ActiveXObject("Microsoft-XMLHTTP");
+                } else {
+                    alert("El navegador no soporta peticiones AJAX");
+                }
+
+                peticion_http.onreadystatechange = procesarRespuesta;
+                
+                peticion_http.open("GET", "ejercicio1.txt",true);
+
+                peticion_http.send(null);
+
+            });
+
+        </script>
+    </body>
+</html>

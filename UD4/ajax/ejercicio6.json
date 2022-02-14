@@ -1,0 +1,19 @@
+[
+    {
+        "nombre":"step",
+        "descripcion":"como unas escaleras pero no lo son",
+        "tipo":[
+            "cardio",
+            "tonificación"
+        ],
+        "duracion": 30,
+        "calorias":2000,
+        "beneficios":[
+            "Resistencia",
+            "Movilidad articular"
+        ]
+        "":[
+            
+        ]
+    }
+]

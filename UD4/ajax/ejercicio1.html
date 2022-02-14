@@ -9,34 +9,7 @@
 
             function procesarRespuesta(){
                 if( peticion_http.readyState == 4 && peticion_http.status == 200 ){
-                    // parrafo.textContent = peticion_http.responseText
-                    var noticias= peticion_http.responseXML.getElementsByTagName("noticia");
-
-                    var i = 0;
-                    var newUl = document.createElement('ul');
-
-                    for( i = 0; i < noticias.length; i++ ){
-
-                        var newLi = document.createElement('li');
-                        var subUl = document.createElement('ul');
-
-                        var titulo = document.createElement('li');
-                        var cuerpo = document.createElement('li');
-                
-                        titulo.textContent = noticias[i].children[0].textContent;
-                        cuerpo.textContent = noticias[i].children[1].textContent;
-
-                        subUl.appendChild(titulo);
-                        subUl.appendChild(cuerpo);
-
-                        newLi.appendChild(subUl);
-                        
-                        newUl.appendChild(newLi);
-                    }
-
-                    var body = document.getElementsByTagName('body');
-                    body[0].appendChild(newUl);
-
+                    btn.parentElement.innerHTML = peticion_http.responseText;
                 }
             }
         </script>
@@ -44,23 +17,28 @@
     <body>
         <script>
             window.onload = function(){
-
-                if( window.XMLHttpRequest ){
-                    peticion_http = new XMLHttpRequest();
-                } else if( window.ActiveXObject ){
-                    peticion_http = new ActiveXObject("Microsoft-XMLHTTP");
-                } else {
-                    alert("El navegador no soporta peticiones AJAX");
-                }
-
-                peticion_http.onreadystatechange = procesarRespuesta;
                 
-                peticion_http.open("GET", "noticias.xml",true);
+                btn = document.getElementById("btn");
 
-                peticion_http.send(null);
-            
+                btn.addEventListener("click", function(){
+                    if( window.XMLHttpRequest ){
+                        peticion_http = new XMLHttpRequest();
+                    } else if( window.ActiveXObject ){
+                        peticion_http = new ActiveXObject("Microsoft-XMLHTTP");
+                    } else {
+                        alert("El navegador no soporta peticiones AJAX");
+                    }
+
+                    peticion_http.onreadystatechange = procesarRespuesta;
+                    
+                    peticion_http.open("GET", "ejercicio1.txt",true);
+
+                    peticion_http.send(null);
+                
+                });
             }
         </script>
-    
+
+        <button id="btn">Cambiar boton</button>
     </body>
 </html>
