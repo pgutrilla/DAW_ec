@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"> 
+        <title>Ejercicio con php</title>
+        
+        <script>               
+
+            function showHint() {
+                
+                var texto = document.getElementById("txt1");
+                var alerta = document.getElementById("txtHint");
+
+                if( texto.length != 0 ){
+
+                    //Crear el objeto
+                    if(window.XMLHttpRequest){
+                        peticion_http= new XMLHttpRequest();
+                    }else if(window.ActiveXObject){
+                        peticion_http=new ActiveXObject("Microsoft.XMLHTTP");
+                    }else{
+                        alert("No hay AJAX");
+                    }
+
+                    peticion_http.onreadystatechange=procesaRespuesta;
+                    
+                    querystring = "q="+document.getElementById("txt1").value;
+                    peticion_http.open("POST", "gethint.php",true);        
+                    peticion_http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                    
+                    peticion_http.send(querystring);
+
+                } else {
+                    alerta.textContent="No hay parametro";
+                    return;
+                }
+
+                
+
+                function procesaRespuesta(){
+                    if (peticion_http.readyState == 4 && peticion_http.status == 200){ //datos listos y respuesta correcta
+                        document.getElementById("txtHint").innerHTML = peticion_http.responseText;
+                    }
+                }
+
+
+            }
+ 
+        </script>
+    </head>
+ 
+    <body>
+        <h2>The XMLHttpRequest Object</h2>
+        <h3>Start typing a name in the input field below:</h3>
+ 
+        <p>Suggestions: <span id="txtHint"></span></p>
+        <p>First name: <input type="text" id="txt1" ></p>
+ 
+        <div id="resultado"></div>
+        <script >
+            document.getElementById("txt1").addEventListener("keyup",showHint,false);
+        </script>
+    </body>
+</html>

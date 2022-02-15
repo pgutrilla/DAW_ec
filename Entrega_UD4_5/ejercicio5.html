@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Manipulando DOM</title>
+
+        <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            
+
+            $(document).ready(iniciar);
+            function iniciar() {
+                
+                var htmlContent = "";
+
+                $("#boton1").on("click", function(e) {
+                    
+                    htmlContent = $('ul').html();
+                    $('ul').empty();
+
+                });
+
+                $("#boton2").on("click", function(e) {
+                    
+                    $('ul').html( htmlContent );
+
+                });
+
+                $("#boton3").on("click", function(e) {
+
+                    var posicion = $('ul').children().length + 1;
+                    
+                    var newLi = document.createElement("li");
+                    newLi.textContent = posicion + " item";
+
+                    $('ul').append(newLi);
+
+                });
+
+                $("#boton4").on("click", function(e) {
+
+                    var posicion = $('ul').children().length + 1;
+                    
+                    var newLi = document.createElement("li");
+                    newLi.textContent = posicion + " item";
+
+                    $('ul').prepend(newLi);
+
+                });
+
+                $("#boton5").on("click", function(e) {
+                    $("li").first().remove();
+                });
+
+                $("#boton6").on("click", function(e) {
+                    $("li").last().remove();
+                });
+
+                $("#boton7").on("click", function(e) {
+                    $("li").css("color", "black");
+                    $("li:odd").css("color", "red");
+                });
+                
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <h2>Manipulando DOM</h2>
+
+        <ul>
+            <li>Primer item.</li>
+            <li>Segundo item.</li>
+            <li>Tercer item.</li>
+            <li>Cuarto item.</li>
+        </ul>
+
+        <p>
+            <input type="button" id="boton1" value="Eliminar la lista completa."><br>
+            <input type="button" id="boton2" value="Restaurar Lista"><br>
+            <input type="button" id="boton3" value="Añadir un elemento al final de la lista"><br>
+            <input type="button" id="boton4" value="Añadir un elemento al principio de la lista"><br>
+            <input type="button" id="boton5" value="Eliminar el último elemento."><br>
+            <input type="button" id="boton6" value="Eliminar el primer elemento."><br>
+            <input type="button" id="boton7" value="Decorar colores alternos"><br>
+        </p>
+
+    </body>
+</html>

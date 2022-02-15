@@ -32,7 +32,7 @@
         "nombre":"Yoga",
         "descripcion":"Relajao, Relajao, Relajao, Relajao, Relajao",
         "tipo":[
-            "Eslasticidad",
+            "Eslasticidad"
         ],
         "duracion": 60,
         "calorias":300,
@@ -41,5 +41,5 @@
             "Movilidad articular",
             "Control abdominal"
         ]
-    },
+    }
 ]
