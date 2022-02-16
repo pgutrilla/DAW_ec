@@ -17,8 +17,8 @@
         "nombre":"Boxeo",
         "descripcion":"Consiste en darse leches",
         "tipo":[
-            "box",
-            "resistencia"
+            "Box",
+            "Resistencia"
         ],
         "duracion": 60,
         "calorias": 4000,
@@ -32,7 +32,7 @@
         "nombre":"Yoga",
         "descripcion":"Relajao, Relajao, Relajao, Relajao, Relajao",
         "tipo":[
-            "Eslasticidad"
+            "Elasticidad"
         ],
         "duracion": 60,
         "calorias":300,
