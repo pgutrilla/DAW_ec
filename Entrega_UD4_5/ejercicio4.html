@@ -18,6 +18,7 @@
 
                 $("#boton1").on("click", function(e) {
                     
+                    // Guardo el estado de la tabla y la vacio
                     htmlContent = $('ul').html();
                     $('ul').empty();
 
@@ -25,12 +26,14 @@
 
                 $("#boton2").on("click", function(e) {
                     
+                    // Relleno la tabla usando el contenido anteriormente guardado
                     $('ul').html( htmlContent );
 
                 });
 
                 $("#boton3").on("click", function(e) {
 
+                    // Añado un elemento a la lista con el nuemero siguiente y al final
                     var posicion = $('ul').children().length + 1;
                     
                     var newLi = document.createElement("li");
@@ -42,6 +45,7 @@
 
                 $("#boton4").on("click", function(e) {
 
+                    // Añado un elemento a la lista con el nuemero siguiente y al principio
                     var posicion = $('ul').children().length + 1;
                     
                     var newLi = document.createElement("li");
@@ -52,14 +56,17 @@
                 });
 
                 $("#boton5").on("click", function(e) {
-                    $("li").first().remove();
-                });
-
-                $("#boton6").on("click", function(e) {
+                    // Quito el ultimo elemento
                     $("li").last().remove();
                 });
 
+                $("#boton6").on("click", function(e) {
+                    // Quito el primer elemento
+                    $("li").first().remove();
+                });
+
                 $("#boton7").on("click", function(e) {
+                    // Pongo rojos los elementos impares
                     $("li").css("color", "black");
                     $("li:odd").css("color", "red");
                 });

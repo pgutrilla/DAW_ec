@@ -18,6 +18,7 @@
 
             }
 
+            //PETICION POST usando la URL de XAMPP y llamando a loadTable
             function cargarJSON() {
                 $.ajax({
                     method: "post",
@@ -34,6 +35,7 @@
 
             function loadTabla(data) {
 
+                //REINICIO LA TABLA
                 $("#tabla").html("<tr> <th>ACTIVIDAD</th> <th>TIPO</th> </tr>");
 
                 for (let i = 0; i < data.length; i++) {
@@ -43,17 +45,28 @@
                     var actividad = data[i].nombre;
                     var tipo = data[i].tipo;
 
-                    var newRow = document.createElement("tr");
+                    // var newRow = document.createElement("tr");
 
-                    var actividadTd = document.createElement("td");
-                    actividadTd.textContent = actividad;
-                    var tipoTd = document.createElement("td");
-                    tipoTd.textContent = tipo;
+                    // var actividadTd = document.createElement("td");
+                    // actividadTd.textContent = actividad;
+                    // var tipoTd = document.createElement("td");
+                    // tipoTd.textContent = tipo;
 
-                    newRow.appendChild( actividadTd );
-                    newRow.appendChild( tipoTd );
+                    // newRow.appendChild( actividadTd );
+                    // newRow.appendChild( tipoTd );
 
-                    $("#tabla").append(newRow);
+
+                    //CREO LOS ELEMENTOS RECORRIENDO CADA UNA DE LAS ACTIVIDADES
+                    var actividad = data[i].nombre;
+                    var tipo = data[i].tipo;
+
+                    var rowJquery = $('<tr></tr>');
+          
+                    rowJquery.append('<td>'+ actividad +'</td>');
+                    rowJquery.append('<td>'+ tipo +'</td>');
+
+                    // $("#tabla").append(newRow);
+                    $("#tabla").append(rowJquery);
                 }
 
             }

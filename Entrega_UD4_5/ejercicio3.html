@@ -22,6 +22,7 @@
                         alert("No hay AJAX");
                     }
 
+                    // Creo la peticion GET usando una querystring para pasar los valores
                     peticion_http.onreadystatechange=procesaRespuesta;
                     
                     querystring = "q="+document.getElementById("txt1").value;

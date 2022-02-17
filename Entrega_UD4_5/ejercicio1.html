@@ -24,9 +24,11 @@
                 if( peticion_http.readyState == 4 && peticion_http.status == 200 ){
                     var rawXML= peticion_http.responseXML;
 
+                    //Usando el xml busco en el los elementos CD y los almaceno en un array
                     var cds = rawXML.getElementsByTagName("CD");
                     var table = document.getElementById("demo");                
 
+                    //Creo los elementos de la tabla y la cabecera
                     var newTh = document.createElement("tr");
 
                     var artista = document.createElement("th");
@@ -39,15 +41,18 @@
                     newTh.appendChild( artista );
                     newTh.appendChild( titulo );
 
+                    // Recorro todos los CD
                     var i = 0;
                     for( i = 0; i < cds.length; i++ ){
                         
                         var newTr = document.createElement("tr");
                         var artistaTr = document.createElement("td");
                         // artistaTr.textContent = cds[i].getElementsByTagName("ARTIST")[0].textContent;
+                        //Posicionandome en el cd uso el indice correspondiente al artista
                         artistaTr.textContent = cds[i].children[1].textContent;
                         var tituloTr = document.createElement("td");
                         // tituloTr.textContent = cds[i].getElementsByTagName("TITLE")[0].textContent;;
+                        //Posicionandome en el cd uso el indice correspondiente el titulo
                         tituloTr.textContent = cds[i].children[0].textContent;
 
                         newTr.appendChild( artistaTr );
